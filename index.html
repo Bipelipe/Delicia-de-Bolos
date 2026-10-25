@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#843e49" />
+    <meta name="description" content="Bolos, docinhos e cupcakes feitos à mão para os seus momentos especiais. Monte sua sacola e combine sua encomenda com a Delícia de Bolos pelo Instagram." />
+    <title>Delícia de Bolos · Feito com afeto</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preload" as="image" href="assets/hero-cake.png" />
+    <script src="js/main.js" type="module"></script>
+  </head>
+  <body>
+    <svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+      <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+      <symbol id="icon-cake" viewBox="0 0 32 32"><path d="M5 27h22M7 26V14h18v12M7 19c3 4 4-4 7 0s4-4 7 0 4 0 4 0M5 14h22M11 13V9m5 4V8m5 5V9"/><path d="M11 6c2-2 1-3 0-4-2 2-2 3 0 4ZM16 5c2-2 1-3 0-4-2 2-2 3 0 4ZM21 6c2-2 1-3 0-4-2 2-2 3 0 4Z"/></symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="icon-flower" viewBox="0 0 32 32"><path d="M16 11c-7-13-15-2-7 3-15 1-11 14 1 9-6 13 8 15 9 2 9 11 18 0 7-6 15-4 7-16-3-8 2-15-12-15-7 0Z"/><circle cx="17" cy="18" r="3"/></symbol>
+    </svg>
+    <a href="#cardapio" class="skip-link">Pular para o cardápio</a>
+    <div class="announcement"><span>Um pouquinho de açúcar. Um montão de afeto.</span><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#inicio" class="brand" aria-label="Delícia de Bolos, início">
+          <svg class="brand-icon" aria-hidden="true"><use href="#icon-cake"/></svg>
+          <span class="brand-wordmark">delícia de bolos<span>CONFEITARIA ARTESANAL</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Navegação principal">
+          <a href="#cardapio">Nosso cardápio</a>
+          <a href="#como-encomendar">Como encomendar</a>
+          <a href="#sobre">Feito com afeto</a>
+        </nav>
+        <button id="cart-open" class="bag-button" type="button" aria-haspopup="dialog" aria-controls="cart-dialog" aria-label="Abrir sacola, 0 itens">
+          <svg class="icon" aria-hidden="true"><use href="#icon-bag"/></svg><span class="bag-label">Minha sacola</span><span id="cart-count" class="bag-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="little-line"></span> FEITO À MÃO, DE CORAÇÃO</span>
+          <h1 id="hero-title">A vida fica <br>mais doce<br>com <em>afeto.</em></h1>
+          <p>Bolos, docinhos e cupcakes que transformam<br class="desktop-break"> pequenos encontros em memórias deliciosas.</p>
+          <a href="#cardapio" class="button button-primary">Escolha sua delícia<svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          <div class="hero-note"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg> Feito com carinho. Pensado para você.</div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-photo-wrap"><img src="assets/hero-cake.png" alt="Bolo artesanal de creme e morangos sobre um delicado suporte rosa" class="hero-photo" width="1536" height="1024" fetchpriority="high" /></div>
+          <div class="artisan-seal"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span>feito com<br><em>amor</em></span><span class="seal-small">EM CADA DETALHE</span></div>
+          <span class="handwritten hero-caption">para celebrar o que importa <span aria-hidden="true">↗</span></span>
+          <svg class="hero-flower" aria-hidden="true"><use href="#icon-flower"/></svg>
+        </div>
+      </section>
+
+      <div class="promise-strip"><div class="container promise-inner">
+        <span><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg> Produção artesanal</span><span class="promise-divider" aria-hidden="true">✦</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#icon-cake"/></svg> Preparado por encomenda</span><span class="promise-divider" aria-hidden="true">✦</span>
+        <span><svg class="icon" aria-hidden="true"><use href="#icon-bag"/></svg> Seu pedido, do seu jeitinho</span>
+      </div></div>
+
+      <section class="catalog-section container" id="cardapio" aria-labelledby="catalog-title">
+        <div class="section-heading"><div><span class="eyebrow">UM MOTIVO A MAIS PARA SORRIR</span><h2 id="catalog-title">Qual vai ser a sua <em>delícia?</em></h2></div><p>Escolha seus favoritos.<br>O carinho vai em cada pedido.</p></div>
+        <div class="catalog-toolbar">
+          <div class="category-filters" role="group" aria-label="Filtrar por categoria">
+            <button type="button" class="filter-button is-active" data-category="todos" aria-pressed="true">Todas as delícias <span>6</span></button>
+            <button type="button" class="filter-button" data-category="bolos" aria-pressed="false">Bolos</button>
+            <button type="button" class="filter-button" data-category="docinhos" aria-pressed="false">Docinhos</button>
+            <button type="button" class="filter-button" data-category="cupcakes" aria-pressed="false">Cupcakes</button>
+          </div>
+          <span class="catalog-hint"><span></span> Feitos por encomenda</span>
+        </div>
+        <p id="filter-status" class="sr-only" role="status" aria-live="polite"></p>
+        <div id="product-grid" class="product-grid"></div>
+        <noscript><p>Ative o JavaScript para ver o catálogo e montar sua sacola. Você também pode encomendar pelo <a href="https://www.instagram.com/deliciadeboloss/">Instagram @deliciadeboloss</a>.</p></noscript>
+        <p class="catalog-disclaimer">Um cardápio de inspiração, feito para você imaginar a sua festa. <span>Sabores, valores e disponibilidade sujeitos à confirmação.</span></p>
+      </section>
+
+      <section class="how-section" id="como-encomendar" aria-labelledby="how-title"><div class="container">
+        <div class="center-heading"><span class="eyebrow">DO PRIMEIRO CLIQUE À PRIMEIRA MORDIDA</span><h2 id="how-title">Encomendar é <em>uma delícia.</em></h2><p>Você escolhe. A gente cuida de cada detalhe.</p></div>
+        <div class="steps-grid">
+          <article class="step"><span class="step-number">01</span><div><h3>Escolha com o coração</h3><p>Explore o cardápio, escolha as opções e adicione seus favoritos à sacola.</p></div></article>
+          <article class="step"><span class="step-number">02</span><div><h3>Copie seu pedido</h3><p>Confira as delícias na sacola e copie o resumo com todos os detalhes.</p></div></article>
+          <article class="step"><span class="step-number">03</span><div><h3>Vamos conversar?</h3><p>Cole o pedido no nosso Instagram. Combinamos a data, a entrega e o pagamento por lá.</p></div></article>
+        </div>
+      </div></section>
+
+      <section class="about-section container" id="sobre" aria-labelledby="about-title">
+        <div class="about-art"><svg class="about-cake" aria-hidden="true"><use href="#icon-cake"/></svg><span class="handwritten">o ingrediente secreto<br>sempre foi o carinho.</span><svg class="about-heart icon" aria-hidden="true"><use href="#icon-heart"/></svg></div>
+        <div class="about-copy"><span class="eyebrow">POR TRÁS DE CADA DELÍCIA</span><h2 id="about-title">Mais que doces.<br><em>Memórias à mesa.</em></h2><p>Tem abraço que vem em forma de bolo. Tem conversa que fica melhor com um docinho. E tem momentos que merecem um sabor só deles.</p><p>É para esses momentos que existe a Delícia de Bolos: confeitaria artesanal, cuidado nos detalhes e afeto em cada receita.</p><a class="text-link" href="https://www.instagram.com/deliciadeboloss/" target="_blank" rel="noopener noreferrer">Conheça nosso Instagram<svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a></div>
+      </section>
+
+      <section class="contact-banner container" aria-labelledby="contact-title"><svg class="contact-flower" aria-hidden="true"><use href="#icon-flower"/></svg><div><span class="eyebrow">TEM UMA IDEIA ESPECIAL?</span><h2 id="contact-title">Vamos adoçar esse <em>momento?</em></h2><p>Conte o que você imaginou. A gente sonha junto.</p></div><a class="button button-light" href="https://www.instagram.com/deliciadeboloss/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg> Converse com a gente<svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a></section>
+    </main>
+
+    <footer class="site-footer container"><a href="#inicio" class="brand footer-brand"><svg class="brand-icon" aria-hidden="true"><use href="#icon-cake"/></svg><span class="brand-wordmark">delícia de bolos<span>CONFEITARIA ARTESANAL</span></span></a><p>Feito com afeto, do começo ao último pedaço.</p><a href="https://www.instagram.com/deliciadeboloss/" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg>@deliciadeboloss</a><div class="footer-bottom"><span>© <span id="current-year">2026</span> Delícia de Bolos.</span><span>Uma dose extra de carinho em cada receita <svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg></span></div></footer>
+
+    <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="cart-title">
+      <div class="cart-header"><div><span class="eyebrow">SUAS ESCOLHAS, NOSSO CARINHO</span><h2 id="cart-title">Minha <em>sacola</em></h2></div><button id="cart-close" class="icon-button" type="button" aria-label="Fechar sacola">×</button></div>
+      <div class="cart-content"><p id="cart-empty" class="cart-empty">Sua sacola está esperando uma delícia.<br><span>Escolha seus favoritos no cardápio!</span></p><div id="cart-items" class="cart-items"></div></div>
+      <div id="cart-summary" class="cart-summary" hidden><div class="cart-total"><span>Total estimado</span><strong id="cart-total">R$ 0,00</strong></div><p>Confirme a disponibilidade, a data e a entrega pelo Instagram. O pedido só é confirmado na conversa.</p><button id="checkout-button" class="button button-primary checkout-button" type="button" disabled><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg>Copiar Pedido e Enviar no Instagram</button></div>
+      <p id="checkout-status" class="checkout-status" role="status" aria-live="polite"></p>
+      <div id="checkout-result" class="checkout-result" hidden><label for="order-text">Seu pedido, pronto para enviar</label><textarea id="order-text" rows="8" readonly></textarea><a id="instagram-link" class="button button-primary" href="https://www.instagram.com/deliciadeboloss/" target="_blank" rel="noopener noreferrer">Abrir Instagram<svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a><p>Abra uma conversa com @deliciadeboloss e cole o resumo.</p></div>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
