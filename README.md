@@ -27,13 +27,17 @@ Sirva os arquivos por HTTP; abrir `index.html` diretamente como arquivo não car
 
 O PDF mencionado na solicitação não estava disponível. A paleta **provisória** de creme, rosa e vinho está concentrada nos tokens `:root` de `css/styles.css`. Substitua-os pelas cores oficiais quando o PDF for fornecido.
 
-Os seis produtos, seus nomes, opções e preços são **demonstrativos**. Atualize `js/products.js` com o catálogo real antes de aceitar encomendas. Os preços são números inteiros em centavos; por exemplo, `12000` representa R$ 120,00. Cada quantidade representa uma opção completa: dois itens de uma caixa de 25 docinhos representam duas caixas, não dois docinhos.
+Os nomes e as imagens dos seis produtos continuam ilustrativos. Os tamanhos e preços em `js/products.js` seguem as fotos do cardápio enviadas pela confeitaria: bolos de 1 kg por R$ 90,00, 1,5 kg por R$ 135,00, 2 kg por R$ 180,00 e 2,5 kg por R$ 225,00; docinhos por R$ 120,00 o cento; cupcakes por R$ 6,00 a unidade. As quantidades de fatias seguem o cardápio (10, 15, 20 e 25, respectivamente) e são estimadas.
+
+Os preços são números inteiros em centavos; por exemplo, `12000` representa R$ 120,00. Cada quantidade representa uma opção completa: dois itens de docinhos representam dois centos (200 docinhos, R$ 240,00); seis cupcakes representam seis unidades (R$ 36,00). Não há preços para caixas de 25 ou 50 docinhos no cardápio enviado, por isso essas opções foram removidas. O acréscimo de R$ 15,00 por andar e o topo a partir de R$ 10,00 estão informados na página; são combinados pelo Instagram e não entram automaticamente no total da sacola.
 
 As fotos são ilustrações geradas para este projeto. A grade usa uma composição de três colunas por duas linhas com `photoPosition`. Para usar fotos individuais oficiais, atualize `image`, remova `photoPosition` do produto e ajuste `.product-photo` para `background-size: cover`. A miniatura da sacola já aceita imagens individuais.
 
 ## Sacola e Instagram
 
-A sacola é salva em `localStorage` na chave `delicia-cart-v1`. Contém somente identificadores dos produtos, variantes e quantidades. Os valores são sempre recalculados a partir do catálogo atual. Há um limite de 99 por opção, tratamento de dados inválidos e funcionamento em memória se o armazenamento estiver bloqueado.
+A sacola é salva em `localStorage` na chave `delicia-cart-v2`. Contém somente identificadores dos produtos, variantes e quantidades. Os valores são sempre recalculados a partir do catálogo atual. Há um limite de 99 por opção, tratamento de dados inválidos e funcionamento em memória se o armazenamento estiver bloqueado.
+
+Como as opções de peso e embalagem mudaram, sacolas da versão anterior não são convertidas pelos índices antigos: o site avisa que é preciso selecionar os itens novamente. Os dados antigos permanecem intactos na chave `delicia-cart-v1`, evitando transformar silenciosamente uma caixa antiga em um cento ou trocar o peso de um bolo.
 
 Ao clicar em **Copiar Pedido e Enviar no Instagram**, o site consolida os produtos e o total estimado e tenta `navigator.clipboard.writeText`. A API exige HTTPS ou um contexto local seguro e pode depender da permissão do navegador. O código contém comentários sobre esse processo e disponibiliza o resumo selecionável quando a cópia automática falha.
 

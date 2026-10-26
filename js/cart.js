@@ -1,4 +1,8 @@
-const STORAGE_KEY = 'delicia-cart-v1';
+// As opções do catálogo mudaram: índices antigos não representam os mesmos
+// tamanhos/quantidades. Uma nova versão evita reinterpretar pedidos anteriores.
+// A chave v1 é apenas consultada para o aviso; seu conteúdo permanece intacto.
+const STORAGE_KEY = 'delicia-cart-v2';
+const LEGACY_STORAGE_KEY = 'delicia-cart-v1';
 const MAX_QUANTITY = 99;
 const currency = new Intl.NumberFormat('pt-BR', {
   style: 'currency',
@@ -21,7 +25,16 @@ export function initCart(products) {
   const orderText = document.querySelector('#order-text');
   const checkoutStatus = document.querySelector('#checkout-status');
   const instagramLink = document.querySelector('#instagram-link');
+  let legacyNeedsReselect = false;
   let lines = restore();
+  const catalogNotice = element(
+    'p',
+    'cart-catalog-notice',
+    'Atualizamos as opções e os preços do cardápio. Sua sacola anterior não foi reaproveitada para evitar trocar tamanhos ou quantidades. Escolha novamente seus produtos no cardápio.',
+  );
+  catalogNotice.id = 'cart-catalog-notice';
+  catalogNotice.setAttribute('role', 'status');
+  emptyElement.before(catalogNotice);
   let revision = 0;
   let copying = false;
   let previousFocus;
@@ -48,7 +61,17 @@ export function initCart(products) {
 
   function restore() {
     try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      const savedValue = localStorage.getItem(STORAGE_KEY);
+      if (savedValue === null) {
+        try {
+          const legacy = JSON.parse(localStorage.getItem(LEGACY_STORAGE_KEY) || '[]');
+          legacyNeedsReselect = Array.isArray(legacy) && legacy.length > 0;
+        } catch {
+          // Dados antigos corrompidos não são importados nem sobrescritos.
+        }
+        return [];
+      }
+      const saved = JSON.parse(savedValue);
       if (!Array.isArray(saved)) return [];
       const restored = [];
       for (const line of saved) {
@@ -123,7 +146,8 @@ export function initCart(products) {
       'aria-label',
       `Abrir sacola, ${quantity} ${quantity === 1 ? 'item' : 'itens'}`,
     );
-    emptyElement.hidden = lines.length > 0;
+    catalogNotice.hidden = !legacyNeedsReselect;
+    emptyElement.hidden = lines.length > 0 || legacyNeedsReselect;
     summaryElement.hidden = lines.length === 0;
     checkoutButton.disabled = lines.length === 0 || copying;
     totalElement.textContent = currency.format(total() / 100);
@@ -187,6 +211,7 @@ export function initCart(products) {
 
   function changed() {
     revision += 1;
+    legacyNeedsReselect = false;
     checkoutResult.hidden = true;
     orderText.value = '';
     checkoutStatus.textContent = '';

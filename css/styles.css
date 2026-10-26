@@ -174,6 +174,7 @@ h2 { font-size: clamp(32px, 3.4vw, 43px); line-height: 1.15; letter-spacing: -1.
 .icon-button { width: 44px; height: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--line); border-radius: 50%; color: var(--wine); font-size: 25px; }
 .icon-button:hover { background: var(--blush); }
 .cart-content { padding-inline: 27px; }
+.cart-catalog-notice { margin-block: 24px; padding: 16px; background: var(--blush); border: 1px solid #d6b9b7; border-radius: 5px; color: var(--wine); font-size: 12px; line-height: 1.8; }
 .cart-empty { padding: 75px 0; text-align: center; font-family: var(--serif); font-size: 22px; line-height: 1.5; color: var(--wine); }
 .cart-empty > span { font-family: var(--sans); font-size: 12px; color: var(--muted); }
 .cart-item { padding-block: 23px; display: flex; gap: 18px; border-bottom: 1px solid var(--line); }
