@@ -39,6 +39,19 @@ Ao clicar em **Copiar Pedido e Enviar no Instagram**, o site consolida os produt
 
 Depois da cópia, um botão abre o perfil **@deliciadeboloss** em outra aba. O cliente deve iniciar uma conversa e colar o resumo; o Instagram não permite preencher automaticamente uma mensagem por esse link. A encomenda, o valor final, a data, o pagamento e a entrega/retirada são confirmados diretamente com a confeitaria. A sacola não é apagada ao copiar.
 
+## Revisão e publicação
+
+As próximas atualizações devem ir primeiro para a branch `preview`. O merge em `main` depende de autorização explícita do usuário para cada conjunto de mudanças; consulte `AGENTS.md`.
+
+O workflow `.github/workflows/deploy.yml` monta dois sites estáticos no mesmo artefato:
+
+- Produção: `https://bipelipe.github.io/Delicia-de-Bolos/`, com arquivos de `main`.
+- Revisão: `https://bipelipe.github.io/Delicia-de-Bolos/preview/`, com arquivos de `preview`.
+
+Os endereços dependem de uma publicação bem-sucedida. Um push em `preview` atualiza a revisão e republica os arquivos aprovados de `main` na raiz, sem incorporar as mudanças da revisão à produção. O workflow copia apenas `index.html`, `css`, `js`, `assets` e `.nojekyll`; não publica metadados Git nem arquivos de testes.
+
+Em **Settings → Pages → Build and deployment**, a origem deve ser **GitHub Actions**. Se o ambiente `github-pages` tiver restrições de branches, elas precisam permitir esse fluxo de publicação para `main` e `preview`, mantendo as aprovações exigidas. O workflow pode ser iniciado por um push em qualquer uma dessas branches. Não faça merge ou altere proteções para contornar a aprovação do usuário.
+
 ## Validação
 
 Com o servidor acima ativo e Playwright para Python e Chromium instalados:

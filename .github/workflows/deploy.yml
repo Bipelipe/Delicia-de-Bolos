@@ -1,0 +1,62 @@
+name: Publish Delícia de Bolos
+
+on:
+  push:
+    branches: [main, preview]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/preview'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the approved version
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref == 'refs/heads/main' && github.sha || 'main' }}
+          path: production
+      - name: Check out the review version
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref == 'refs/heads/preview' && github.sha || 'preview' }}
+          path: review
+      - name: Assemble production and preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Production commit: $(git -C production rev-parse HEAD)"
+          echo "Preview commit: $(git -C review rev-parse HEAD)"
+          mkdir -p site/preview
+          # A página principal recebe apenas main; preview fica em sua própria pasta.
+          # Copiamos apenas arquivos públicos, sem metadados Git ou ferramentas locais.
+          for asset in index.html css js assets .nojekyll; do
+            cp -R "production/$asset" site/
+            cp -R "review/$asset" site/preview/
+          done
+      - name: Upload both sites
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5
